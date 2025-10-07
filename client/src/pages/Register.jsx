@@ -23,7 +23,7 @@ const Register = () => {
 
     try {
       setLoading(true);
-      await axios.post('http://localhost:5000/api/auth/register', {
+      await axios.post('https://finmate-1.onrender.com/api/auth/register', {
         name: form.name,
         email: form.email,
         password: form.password,

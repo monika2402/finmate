@@ -1,6 +1,8 @@
 import { useState } from 'react';
 // import axios from 'axios';
 // import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
+import { ArrowLeft} from 'lucide-react';
 
 const PdfBulkUploader = () => {
   // const { user } = useAuth();
@@ -58,6 +60,13 @@ const PdfBulkUploader = () => {
 
   return (
     <div className="w-full min-h-screen bg-gray-50 p-6">
+      <Link 
+            to="/dashboard" 
+            className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200 mb-4 group"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
+            Back to Dashboard
+          </Link>
       <div className="w-full bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden">
         {/* Header */}
         <div className="bg-gradient-to-r from-blue-500 to-blue-600 px-6 py-4">

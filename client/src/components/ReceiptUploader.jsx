@@ -3,6 +3,8 @@ import Tesseract from 'tesseract.js';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 import { extractDetailsFromText } from '../utils/extractReceiptData';
+import { Link } from 'react-router-dom';
+import { ArrowLeft} from 'lucide-react';
 
 const ReceiptUploader = () => {
   const { user } = useAuth();
@@ -28,7 +30,7 @@ const ReceiptUploader = () => {
         const formData = new FormData();
         formData.append('file', selectedFile);
 
-        const response = await axios.post('http://localhost:5000/api/extract-receipt', formData, {
+        const response = await axios.post('https://finmate-1.onrender.com/api/extract-receipt', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
             Authorization: `Bearer ${user?.token}`,
@@ -76,6 +78,13 @@ const ReceiptUploader = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 p-6">
+      <Link 
+        to="/dashboard" 
+        className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200 mb-4 group"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
+        Back to Dashboard
+      </Link>
       <div className="max-w-4xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h3 className="text-2xl font-bold mb-6 text-gray-800 flex items-center">

@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
+import { ArrowLeft} from 'lucide-react';
 
 const TransactionsList = () => {
   const { user } = useAuth();
@@ -23,7 +25,7 @@ const TransactionsList = () => {
         end: endDate,
       });
 
-      const res = await axios.get(`http://localhost:5000/api/transactions?${params.toString()}`, {
+      const res = await axios.get(`https://finmate-1.onrender.com/api/transactions?${params.toString()}`, {
         headers: { Authorization: `Bearer ${user.token}` },
       });
 
@@ -47,6 +49,13 @@ const TransactionsList = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 p-6">
+      <Link 
+        to="/dashboard" 
+        className="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors duration-200 mb-4 group"
+      >
+        <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform duration-200" />
+        Back to Dashboard
+      </Link>
       <div className="max-w-6xl mx-auto h-full bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden flex flex-col">
         
         {/* Header */}

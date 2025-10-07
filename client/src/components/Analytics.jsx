@@ -19,7 +19,7 @@ const Analytics = () => {
 
   const fetchExpenses = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/transactions/all', {
+      const res = await axios.get('https://finmate-1.onrender.com/api/transactions/all', {
         headers: { Authorization: `Bearer ${user.token}` },
       });
 

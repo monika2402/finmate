@@ -25,7 +25,7 @@ const Dashboard = () => {
 
   const fetchTransactions = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/transactions', {
+      const res = await axios.get('https://finmate-1.onrender.com/api/transactions', {
         headers: { Authorization: `Bearer ${user?.token}` }
       });
       setTransactions(res.data.transactions || []);
@@ -40,7 +40,7 @@ const Dashboard = () => {
     setSuccess('');
     setIsSubmitting(true);
     try {
-      await axios.post('http://localhost:5000/api/transactions', form, {
+      await axios.post('https://finmate-1.onrender.com/api/transactions', form, {
         headers: { Authorization: `Bearer ${user?.token}` }
       });
       setForm({ amount: '', type: 'expense', category: '', date: '', note: '' });
